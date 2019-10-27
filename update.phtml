@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>PHP</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="css/todolist.css">
+</head>
+<body>
+	<main>
+        <h1>Gestionnaire de tâches MODIFICATION</h1>
+        <section>
+            <!-- Formulaire d'ajout de tâche -->
+            <form class="standard-form label-left" action="update.php" method="POST">
+			    <input type="hidden" name="idtask" value="<?php echo $task["id"]; ?>" type="text">
+                <fieldset>
+                    <legend>Informations sur la tâche</legend>
+                    <ul>
+                        <li>
+                            <label for="title">Titre :</label>
+                            <input id="title" name="title" value="<?php echo $task["titre"]; ?>" type="text">
+                        </li>
+                        <li>
+                            <label for="description">Tâche :</label>
+                            <textarea id="description" name="description" rows="5"><?php echo $task["description"]; ?></textarea>
+                        </li>
+                        <li>
+                            <label for="day">Date de fin :</label>
+                            <select id="day" name="day">
+                                <?php for($day = 1; $day <= 31; $day++): ?>
+                                    <option <?php if($day1 ==$day ){echo "selected";} ?> value="<?= $day ?>"><?= $day ?></option>
+                                <?php endfor ?>
+                            </select>
+                            <span>/</span>
+                            <select name="month">
+                                <option <?php if($month1 ==1 ){echo "selected";} ?> value="1">Janvier</option>
+                                <option <?php if($month1 ==2 ){echo "selected";} ?> value="2">Février</option>
+                                <option <?php if($month1 ==3 ){echo "selected";} ?> value="3">Mars</option>
+                                <option <?php if($month1 ==4 ){echo "selected";} ?> value="4">Avril</option>
+                                <option <?php if($month1 ==5 ){echo "selected";} ?> value="5">Mai</option>
+                                <option <?php if($month1 ==6 ){echo "selected";} ?> value="6">Juin</option>
+                                <option <?php if($month1 ==7 ){echo "selected";} ?> value="7">Juillet</option>
+                                <option <?php if($month1 ==8 ){echo "selected";} ?> value="8">Août</option>
+                                <option <?php if($month1 ==9 ){echo "selected";} ?> value="9">Septembre</option>
+                                <option <?php if($month1 ==10 ){echo "selected";} ?> value="10">Octobre</option>
+                                <option <?php if($month1 ==11 ){echo "selected";} ?> value="11">Novembre</option>
+                                <option <?php if($month1 ==12 ){echo "selected";} ?> value="12">Décembre</option>
+                            </select>
+                            <span>/</span>
+                            <select name="year">
+                                <?php for($year = date('Y'); $year < date('Y') + 5; $year++): ?>
+                                    <option <?php if($year1 ==$year ){echo "selected";} ?> value="<?= $year ?>"><?= $year ?></option>
+                                <?php endfor ?>
+                            </select>
+                        </li>
+                        <li>
+                            <label>Priorité :</label>
+                            <input id="priority-low" name="priority" type="radio" <?=$priority1?> value="priority-low">
+                            <label for="priority-low">Basse</label>
+                            <input id="priority-normal" name="priority" type="radio" <?=$priority2?> value="priority-normal">
+                            <label for="priority-normal">Normale</label>
+                            <input id="priority-high" name="priority" type="radio" <?=$priority3?> value="priority-high">
+                            <label for="priority-high">Haute</label>
+                        </li>
+                        <li>
+                            <input type="submit" value="Modifier" title="Ajouter une nouvelle tâche">
+                        </li>
+                    </ul>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
